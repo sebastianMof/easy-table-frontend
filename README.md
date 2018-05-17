@@ -1,0 +1,2 @@
+# easyTableFront
+npm start
