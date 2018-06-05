@@ -1,2 +1,2 @@
-# easyTableFront
-npm start
+# easyTable Frontend
+npm/yarn
