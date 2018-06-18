@@ -14,7 +14,7 @@ export class mesa extends Component {
     render() {
         const {numero, capacidad} = this.state;
         return <p>
-            {numero}<br/>
+            {numero} hola q talbdbhjasbdhbashj<br/>
             {capacidad}<br/>
         </p>
     }

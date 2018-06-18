@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ReactDOM from 'react-dom';
+import { Link } from "react-router-dom";
 import Form from "./Form";
 import Form_regis from "./Form_regis";
-import {usuario} from './usuario'
+//import Form_reser from "./Form_reser";
+import Form_rec from './Form_rec';
+import usuario from './usuario';
+import recuperar from './recuperar';
+
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +41,6 @@ class App extends Component {
         </header>
         <br/>
         <p className="App-intro">
-          <h1> Iniciar sesión</h1>
           <Form onSubmit={fields => this.onSubmit(fields)}/>
         </p>
       </div>
@@ -44,3 +49,6 @@ class App extends Component {
 }
 
 export default App;
+
+
+//date---  npm install moment --save

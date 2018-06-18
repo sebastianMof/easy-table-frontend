@@ -18,7 +18,7 @@ export class reserva extends Component {
         this.setState({
             estado: true
         });
-        fetch('http://localhost:5555/class/' +
+        fetch('http://localhost:5555/reserva/' +
             this.state.fecha_inicio_reserva+
             '/' +
             this.state.fecha_fin_reserva)
@@ -48,5 +48,6 @@ export class reserva extends Component {
                   {estado}<br/>
               </a>
         </p>
+        </div>
     }
 }
