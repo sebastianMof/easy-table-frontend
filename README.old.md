@@ -1,2 +1,0 @@
-# easyTable Frontend
-npm/yarn
