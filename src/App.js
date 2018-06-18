@@ -19,6 +19,19 @@ class App extends Component {
         });
     };
 
+    componentDidMount() {
+        fetch('http://localhost:5555')//api.github.com is working
+            .then(response => response.json())
+            .then(responseJSON => {
+                console.log('Respuesta del Backend', responseJSON);
+                
+                
+            })
+            .catch(error => {
+                console.log('Te odio', error);
+            })
+    };
+
     render() {
       return (
          <div className="App">
@@ -32,19 +45,9 @@ class App extends Component {
                 {JSON.stringify(this.state.fields, null, 2)}
             </p>
 
-            
-      
          </div>
-
-         
-
-
-    );
-  }
+        );
+    }
 }
 
-
-
-
 export default App;
-

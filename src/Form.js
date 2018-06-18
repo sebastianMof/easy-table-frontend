@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './App.css';
 
 
 class Form extends Component {
@@ -35,9 +36,6 @@ class Form extends Component {
             password :''
         });
     }
-
-
-
 
     render() {
         return(
