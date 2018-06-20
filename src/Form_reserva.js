@@ -56,6 +56,7 @@ export default class Form_reserva extends React.Component{
                     if (responseJSON.status !== 200) {
                         this.setState({loginError: responseJSON.message});
                         console.log(this.state.loginError);
+                        //mensaje de no disponibilidad
                     
                      } else{
                         //redireccionar a mensaje de creado

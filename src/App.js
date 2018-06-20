@@ -7,6 +7,7 @@ import './App.css';
 import Form_login from './Form_login.js';
 import Form_registro from './Form_registro.js';
 import Form_reserva from './Form_reserva.js';
+import Form_liberar from './Form_liberar.js';
 import Mesas from './Mesas.js';
 
 class App extends Component {
@@ -34,8 +35,9 @@ class App extends Component {
     		    </header>
 
     			<br/>
+
     			<h1 className="App-intro">
-                    <Form_reserva onSubmit={fields => this.onSubmit(fields)}/>
+                    <Form_liberar onSubmit={fields => this.onSubmit(fields)}/>
                 </h1>
                 <br/>
 	    		
