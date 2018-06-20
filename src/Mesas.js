@@ -37,13 +37,12 @@ export default class Curso extends Component {
         const {numero, capacidad, mesasLoaded, mesas} = this.state;
         return (
             <div>
-                <p>
-                    <button 
-                    href="#" 
+                <button 
+                    href="mesa" 
                     onClick={this.loadMesas} 
                     className="btn btn-primary btn-block btn-large">Mesas  
                 </button>
-                </p>
+                
             </div>
         );
     }

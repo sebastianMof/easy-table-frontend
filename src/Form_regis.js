@@ -39,8 +39,7 @@ export default class Form_regis extends React.Component{
             fetch('http://localhost:5555/usuario/', {
                 method:'POST',
                 headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 },
                 body : 
                     JSON.stringify(data),

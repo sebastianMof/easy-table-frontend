@@ -34,6 +34,9 @@ class App extends Component {
     		    </header>
 
     			<br/>
+    			<h1 className="App-intro">
+                    <Form_regis onSubmit={fields => this.onSubmit(fields)}/>
+                </h1>
 	    		<Mesas/>
     	    </div>    
     	);
