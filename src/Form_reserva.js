@@ -29,12 +29,10 @@ export default class Form_reserva extends React.Component{
         const { rut, fecha_inicio_reserva, fecha_fin_reserva, capacidad, mesa, hora_fin_reserva, hora_inicio_reserva} = this.state
         const data = {
             rut : this.state.rut,
-            fecha_inicio_reserva : this.state.fecha_inicio_reserva,
-            fecha_fin_reserva : this.state.fecha_fin_reserva,
-            capacidad : this.state.nombre,
-            mesa : this.state.apellido,
-            hora_inicio_reserva: this.state.hora_inicio_reserva,
-            hora_fin_reserva: this.state.hora_fin_reserva
+            fecha_inicio_reserva : '2029-05-01T13:00:30.889Z',
+            fecha_fin_reserva : '2029-05-01T14:00:30.889Z',
+            capacidad : this.state.capacidad,
+            mesa : this.state.mesa
         }
 
         if (rut && fecha_inicio_reserva && fecha_fin_reserva &&hora_inicio_reserva&&hora_fin_reserva && (capacidad ||mesa)) { 
