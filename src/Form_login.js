@@ -1,8 +1,6 @@
 import React from 'react';
 import './App.css';
 import urlcodeJson from 'urlcode-json';
-import Popup from 'react-popup';
-
 
 
 export default class Form_login extends React.Component{
@@ -86,7 +84,7 @@ export default class Form_login extends React.Component{
             </form>
             <br />
             <span className="App-sub" >
-                <a href="Form_regis" 
+                <a href="Form_registro" 
                     style={{color: '#000'}} 
                     //redireccionar a Form_regis
                     onClick={() => this.crearUsuario()}>Crear Cuenta

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {reserva} from './reserva';
 
 
-export default class Curso extends Component {
+export default class Reservas extends Component {
     constructor(props) {
         super(props);
         this.state = {

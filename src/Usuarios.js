@@ -1,24 +1,28 @@
 import React, {Component} from 'react';
-import {mesa} from './mesa';
+import {mesa} from './usuario';
 
 
-export default class Mesas extends Component {
+export default class Usuarios extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            numero: props.numero,
-            capacidad: props.capacidad,
-            mesasLoaded: false,
-            mesas: []
+            rut: props.rut,
+            password: props.password,
+            nombre: props.nombre,
+            apellido: props.apellido,
+            email: props.email,
+            tipo_usuario: props.tipo_usuario,
+            usuariosLoaded: false,
+            usuarios: []
         }
-        this.loadMesas = this.loadMesas.bind(this);
+        this.loadUsuarios = this.loadUsuarios.bind(this);
     }
 
-    loadMesas() {
+    loadUsuarios() {
         this.setState({    
-            mesasLoaded: true
+            usuariosLoaded: true
         });
-        fetch('http://localhost:5555/mesa/', {
+        fetch('http://localhost:5555/usuario/', {
             method:'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +37,7 @@ export default class Mesas extends Component {
                     
                 } else{
                         this.setState({    
-                            mesas: responseJSON.data,
+                            usuarios: responseJSON.data,
                         });
                         //console.log(this.state.mesas[0].numero)      
                         //mesas cargadas
@@ -45,17 +49,17 @@ export default class Mesas extends Component {
     }
 
     render() {
-        const {numero, capacidad, mesasLoaded, mesas} = this.state;
+        const {rut, password, nombre, apellido, email, tipo_usuario, usuariosLoaded, usuarios} = this.state;
         return (
-            <div className= "MesasLocal">
+            <div className= "Usuarios">
                 <button 
                     href="#" 
-                    onClick={this.loadMesas} 
-                    className="btn btn-primary btn-block btn-large">Mesas  
+                    onClick={this.loadUsuarios} 
+                    className="btn btn-primary btn-block btn-large">Usuarios 
                 </button>
                <ul>
-                    {this.state.mesas.map((mesa, i) =>
-                        <li key={i}>{mesa.numero} - {mesa.capacidad}</li>
+                    {this.state.usuarios.map((usuario, i) =>
+                        <li key={i}>{usuario.rut} - {usuario.nombre} - {usuario.apellido} - {usuario.email} - {usuario.tipo_usuario}</li>
                     )}
                 </ul>
                

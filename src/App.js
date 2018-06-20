@@ -6,12 +6,15 @@ import salty from './salty.gif';
 
 import './App.css';
 
+//forms
 import Form_login from './Form_login.js';
 import Form_registro from './Form_registro.js';
 import Form_reserva from './Form_reserva.js';
 import Form_liberar from './Form_liberar.js';
+//data
 import Mesas from './Mesas.js';
 import Reservas from './Reservas.js';
+import Usuarios from './Usuarios.js'
 
 class App extends Component {
 
@@ -32,8 +35,6 @@ class App extends Component {
     render() {
     	const {fields, SidebarOpen} = this.state;
 
-        
-
     	return (
             <Sidebar sidebar={<b>Sidebar content</b>}
                open={this.state.sidebarOpen}
@@ -50,14 +51,14 @@ class App extends Component {
         		    </header>
         			<br/>
         			<h1 className="App-intro">
-                        <Reservas />
+                        <Usuarios />
                     </h1>
                     <br/>
     	    		
         	    </div>
             </Sidebar>    
     	);
-      }
+    }
 
 }
 

@@ -4,14 +4,12 @@ export class usuario extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            rut: props.nombre,
+            rut: props.rut,
             password: props.password,
-            nombre: props.rut,
+            nombre: props.nombre,
             apellido: props.apellido,
             email: props.email,
-            tipo_usuario: props.tipo_usuario
-
-            
+            tipo_usuario: props.tipo_usuario   
         }
     }
 
