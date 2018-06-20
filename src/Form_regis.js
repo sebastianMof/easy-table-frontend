@@ -25,22 +25,27 @@ export default class Form_regis extends React.Component{
         event.preventDefault()
         const { rut, password, nombre, apellido, email} = this.state
         const data = {
-           "rut" : this.state.rut,
-            "tipo_usuario" : 'Cliente',
-            "password" : this.state.password,
-            "nombre" : this.state.nombre,
-            "apellido" : this.state.apellido,
-            "email" : this.state.email
+            rut : this.state.rut,
+            tipo_usuario : 'Cliente',
+            password : this.state.password,
+            nombre : this.state.nombre,
+            apellido : this.state.apellido,
+            email : this.state.email
         }
 
         if (rut && password && nombre && apellido &&email) { 
-            console.log(this.state.rut);
+
+            console.log(JSON.stringify(data));
             fetch('http://localhost:5555/usuario/', {
                 method:'POST',
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body :JSON.stringify(data)})
+                body : 
+                    JSON.stringify(data),
+
+                })
                 .then(response => response.json())
                 .then(responseJSON => {
                     console.log('Respuesta backend', responseJSON);
