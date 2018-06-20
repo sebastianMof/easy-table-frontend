@@ -86,10 +86,7 @@ render(){
                   color: '#000'
               }} onClick={() => this.Recuperar_contraseña()}>Recuperar Contraseña</a></span>
 
-/*              if(this.state.url !== ''){
-                
-                <Redirect to = {this.state.url}/>
-              }*/
+
 
               
 </div>
