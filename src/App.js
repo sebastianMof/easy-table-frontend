@@ -9,6 +9,7 @@ import Form_registro from './Form_registro.js';
 import Form_reserva from './Form_reserva.js';
 import Form_liberar from './Form_liberar.js';
 import Mesas from './Mesas.js';
+import Reservas from './Reservas.js';
 
 class App extends Component {
 
@@ -38,7 +39,7 @@ class App extends Component {
 
     			<h1 className="App-intro">
 
-                    <Mesas />
+                    <Reservas />
                 </h1>
                 <br/>
 	    		

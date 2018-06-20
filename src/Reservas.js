@@ -1,24 +1,29 @@
 import React, {Component} from 'react';
-import {mesa} from './mesa';
+import {reserva} from './reserva';
 
 
 export default class Curso extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            numero: props.numero,
-            capacidad: props.capacidad,
-            mesasLoaded: false,
-            mesas: []
+            id: props.id,
+            fecha_inicio_reserva: props.fecha_inicio_reserva,
+            fecha_fin_reserva: props.fecha_fin_reserva,
+            estado: props.estado,
+            mesaNumero: props.mesaNumero,
+            usuarioRut: props.usuarioRut,
+            reservas: []
         }
-        this.loadMesas = this.loadMesas.bind(this);
+        this.loadReservas = this.loadReservas.bind(this);
+        this.loadReservasActivas = this.loadReservasActivas.bind(this);
+
     }
 
-    loadMesas() {
+    loadReservas() {
         this.setState({    
-            mesasLoaded: true
+            reservasLoaded: true
         });
-        fetch('http://localhost:5555/mesa/', {
+        fetch('http://localhost:5555/reserva/', {
             method:'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -33,7 +38,7 @@ export default class Curso extends Component {
                     
                 } else{
                         this.setState({    
-                            mesas: responseJSON.data,
+                            reservas: responseJSON.data,
                         });
                         //console.log(this.state.mesas[0].numero)      
                         //mesas cargadas
@@ -44,18 +49,55 @@ export default class Curso extends Component {
             })
     }
 
+    loadReservasActivas() {
+        this.setState({    
+            reservasLoaded: true
+        });
+        fetch('http://localhost:5555/reserva/activas', {
+            method:'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },})
+            .then(response => response.json())
+            .then(responseJSON => {
+                console.log('Respuesta backend', responseJSON);
+                
+                if (responseJSON.status !== 1) {
+                        this.setState({loginError: responseJSON.message});                        
+                        //mensaje de error al cargar mesas del local
+                    
+                } else{
+                        this.setState({    
+                            reservas: responseJSON.data,
+                        });
+                        //console.log(this.state.mesas[0].numero)      
+                        //mesas cargadas
+                }
+            })
+            .catch(error => {
+                console.log(':(', error);
+            })
+    }
+
+
     render() {
-        const {numero, capacidad, mesasLoaded, mesas} = this.state;
+        const {id, fecha_inicio_reserva, fecha_fin_reserva, estado, mesaNumero, usuarioRut, reservasLoaded, reservas} = this.state;
         return (
-            <div className= "MesasLocal">
+            <div className= "Reservas">
                 <button 
                     href="#" 
-                    onClick={this.loadMesas} 
-                    className="btn btn-primary btn-block btn-large">Mesas  
+                    onClick={this.loadReservas} 
+                    className="btn btn-primary btn-block btn-large">Reservas  
+                </button>
+                <br />
+                <button 
+                    href="#" 
+                    onClick={this.loadReservasActivas} 
+                    className="btn btn-primary btn-block btn-large">Reservas Actvas 
                 </button>
                <ul>
-                    {this.state.mesas.map((mesa, i) =>
-                        <li key={i}>{mesa.numero} - {mesa.capacidad}</li>
+                    {this.state.reservas.map((reserva, i) =>
+                        <li key={i}>{reserva.id} - {reserva.fecha_inicio_reserva} - {reserva.fecha_fin_reserva}  - {reserva.estado} -{reserva.mesaNumero} - {reserva.usuarioRut}  </li>
                     )}
                 </ul>
                
