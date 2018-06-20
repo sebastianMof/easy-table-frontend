@@ -4,8 +4,9 @@ import salty from './salty.gif';
 
 import './App.css';
 
-import Form from './Form.js';
-import Form_regis from './Form_regis.js';
+import Form_login from './Form_login.js';
+import Form_registro from './Form_registro.js';
+import Form_reserva from './Form_reserva.js';
 import Mesas from './Mesas.js';
 
 class App extends Component {
@@ -30,14 +31,14 @@ class App extends Component {
     		    	
     		    	<div className="App-intro">
                 	</div>
-
     		    </header>
 
     			<br/>
     			<h1 className="App-intro">
-                    <Form_regis onSubmit={fields => this.onSubmit(fields)}/>
+                    <Form_reserva onSubmit={fields => this.onSubmit(fields)}/>
                 </h1>
-	    		<Mesas/>
+                <br/>
+	    		
     	    </div>    
     	);
       }

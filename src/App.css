@@ -72,6 +72,12 @@ body {
   height:300px;
 }
 
+.Reservar {
+  margin: auto;
+  width:300px;
+  height:300px;
+}
+
 input {
   width: 100%;
   margin-bottom: 10px;

@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import urlcodeJson from 'urlcode-json';
 
-export default class Form_regis extends React.Component{
+export default class Form_registro extends React.Component{
     
     constructor(props){
         super(props);
@@ -70,6 +70,10 @@ export default class Form_regis extends React.Component{
         return(
         <div className="Registrarse">
             <form  method="post">
+                <h2> Registrarse
+                </h2>
+
+                <br />
                 RUT <input type ="text"
                     placeholder="12345678-9" required="required"
                     value={this.state.rut}
@@ -104,6 +108,6 @@ export default class Form_regis extends React.Component{
 
             </form>
         </div>
-      );
+        );
     }
 }

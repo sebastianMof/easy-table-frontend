@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.css';
 import urlcodeJson from 'urlcode-json';
+import Popup from 'react-popup';
 
 
-export default class Form extends React.Component{
+
+export default class Form_login extends React.Component{
   
     constructor(props){
         super(props);
@@ -27,18 +29,28 @@ export default class Form extends React.Component{
             } , true );
        
         if (rut && password) { 
-          fetch('http://localhost:5555/usuario/login?' + str_1)
-            .then(result => {
-              if (result.status !== 200) {
-                this.setState({loginError: result.message});
-                console.log('loging');
+          fetch('http://localhost:5555/usuario/login?' + str_1 ,{
+                method:'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+
+            })
+            .then(response => response.json())
+            .then(responseJSON => {
+                console.log('Respuesta backend', responseJSON);
+               
+                if (responseJSON.status !== 200) {
+                    this.setState({loginError: responseJSON.message});
+                    console.log(this.state.loginError);
                 
-              } else{
-                //redireccionar a donde corresponda cuanto login es exitoso
-                const url = '/reserva'
-                this.setState(url)
-              }
-              
+                 } else{
+                    //redireccionar a mensaje de logeado
+                    const url = '/reserva'
+                    this.setState(url);
+                    console('LOGING :D');
+                    
+                 }  
             }).catch(e =>{
               console.log(e);
             })
@@ -58,19 +70,15 @@ export default class Form extends React.Component{
                     placeholder="12345678-9" required="required"
                     value={this.state.rut}
                     onChange={e => this.setState({rut: e.target.value})}/>
-
                 <br />
                 <br />
-
                 CONTRASEÑA <input type="password"
                     placeholder="password" required="required"
                     value={this.state.password}
                     onChange={e => this.setState({password: e.target.value})}/>
-
                 <br /> 
                 <br /> 
                 <br />
-
                 <button href="usuario" 
                     onClick={this.onLoginSubmit} 
                     className="btn btn-primary btn-block btn-large">Continuar
