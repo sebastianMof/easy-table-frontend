@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import Form from './Form';
 import urlcodeJson from 'urlcode-json';
 
 export default class Form_regis extends React.Component{
@@ -17,38 +16,56 @@ export default class Form_regis extends React.Component{
             url:''
         };
 
-        this.onLoginSubmit = this.onLoginSubmit.bind(this);
+        this.crearUsuario = this.crearUsuario.bind(this);
     }
-    //Iniciarsesion
-  onLoginSubmit(event) {
-    event.preventDefault()
-    const { rut, password } = this.state
-    var str_1 = urlcodeJson.encode( { "rut" : this.state.rut , "password" : this.state.password } , true );
-   
-    if (rut && password) { //verificar que existe user
-      
-      fetch('http://localhost:5555/usuario/login?' + str_1)
-        .then(result => {
-          if (result.status !== 200) {
-            this.setState({loginError: result.message});
-            console.log('loging');
-            
-          } else{
-            //redireccionar
-            const url = '/reserva'
-            this.setState(url)
-          }
-          
-        }).catch(e =>{
-          console.log(e);
-        })
+
+
+    //Crear usuario
+    crearUsuario(event) {
+        event.preventDefault()
+        const { rut, password, nombre, apellido, email} = this.state
+        const data = {
+           "rut" : this.state.rut,
+            "tipo_usuario" : 'Cliente',
+            "password" : this.state.password,
+            "nombre" : this.state.nombre,
+            "apellido" : this.state.apellido,
+            "email" : this.state.email
+        }
+
+        if (rut && password && nombre && apellido &&email) { 
+            console.log(this.state.rut);
+            fetch('http://localhost:5555/usuario/', {
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body :JSON.stringify(data)})
+                .then(response => response.json())
+                .then(responseJSON => {
+                    console.log('Respuesta backend', responseJSON);
+                   
+                    if (responseJSON.status !== 200) {
+                        this.setState({loginError: responseJSON.message});
+                        console.log(this.state.loginError);
+                    
+                     } else{
+                        //redireccionar a mensaje de creado
+                        const url = '/reserva'
+                        this.setState(url)
+                        
+                     }
+                  
+                }).catch(e =>{
+                  console.log(e);
+                })
+        }
     }
-  }
 
     render(){
         return(
         <div className="Registrarse">
-            <form action_page="./Form" method="post">
+            <form  method="post">
                 RUT <input type ="text"
                     placeholder="12345678-9" required="required"
                     value={this.state.rut}
@@ -75,8 +92,10 @@ export default class Form_regis extends React.Component{
                     onChange={e => this.setState({password: e.target.value})}/>
                 <br />
                 <br />
-                <button type="onLoginSubmit" 
-                    class="btn btn-primary btn-block btn-large">Registrarse  
+                <button 
+                    href="usuario" 
+                    onClick={this.crearUsuario} 
+                    className="btn btn-primary btn-block btn-large">Registrarse  
                 </button>
 
             </form>

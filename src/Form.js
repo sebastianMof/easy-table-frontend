@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-
 import urlcodeJson from 'urlcode-json';
 
 
@@ -22,10 +21,12 @@ export default class Form extends React.Component{
     onLoginSubmit(event) {
         event.preventDefault()
         const { rut, password } = this.state
-        var str_1 = urlcodeJson.encode( { "rut" : this.state.rut , "password" : this.state.password } , true );
+        var str_1 = urlcodeJson.encode( { 
+            "rut" : this.state.rut , 
+            "password" : this.state.password 
+            } , true );
        
-        if (rut && password) { //verificar que existe user
-          
+        if (rut && password) { 
           fetch('http://localhost:5555/usuario/login?' + str_1)
             .then(result => {
               if (result.status !== 200) {
@@ -78,7 +79,11 @@ export default class Form extends React.Component{
             </form>
             <br />
             <span className="App-sub" >
-                <a href="Form_regis" style={{color: '#000'}} onClick={() => this.CrearUsuario()}>Crear Cuenta</a> 
+                <a href="Form_regis" 
+                    style={{color: '#000'}} 
+                    //redireccionar a Form_regis
+                    onClick={() => this.crearUsuario()}>Crear Cuenta
+                </a> 
             </span>  
         </div>
 
