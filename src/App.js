@@ -6,6 +6,7 @@ import './App.css';
 
 import Form from './Form.js';
 import Form_regis from './Form_regis.js';
+import Mesas from './Mesas.js';
 
 class App extends Component {
 
@@ -31,10 +32,9 @@ class App extends Component {
                 	</div>
 
     		    </header>
+
     			<br/>
-	    		<h1 className="App-intro">
-	    		  	<Form_regis onSubmit={fields => this.onSubmit(fields)}/>
-	    		</h1>
+	    		<Mesas/>
     	    </div>    
     	);
       }
