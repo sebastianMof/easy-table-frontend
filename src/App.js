@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './salty.gif';
+import logo from './logo.svg';
+import salty from './salty.gif';
 import './App.css';
 
 import Form from './Form.js'
