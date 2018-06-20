@@ -37,7 +37,8 @@ class App extends Component {
     			<br/>
 
     			<h1 className="App-intro">
-                    <Form_liberar onSubmit={fields => this.onSubmit(fields)}/>
+
+                    <Mesas />
                 </h1>
                 <br/>
 	    		
