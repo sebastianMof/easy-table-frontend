@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import salty from './salty.gif';
+
 import './App.css';
 
-import Form from './Form.js'
+import Form from './Form.js';
+import Form_regis from './Form_regis.js';
 
 class App extends Component {
 
     constructor(props) {
 	super(props);
     	this.state = {
-    		usuario: []
+    		fields: []
     	};
     }
 
     render() {
-    	const {usuario} = this.state;
-
+    	const {fields} = this.state;
+    	
     	return (
             <div className="App">
     	        <header className="App-header">
@@ -30,10 +32,10 @@ class App extends Component {
 
     		    </header>
     			<br/>
-	    		<p className="App-intro">
+	    		<h1 className="App-intro">
 	    		  	<Form onSubmit={fields => this.onSubmit(fields)}/>
-	    		</p>
-    	    </div>
+	    		</h1>
+    	    </div>    
     	);
       }
 

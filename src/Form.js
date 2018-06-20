@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import ReactDOM from 'react-dom';
-import {usuario} from "./usuario";
+
 import urlcodeJson from 'urlcode-json';
 
 
@@ -20,38 +19,38 @@ export default class Form extends React.Component{
     }
 
 //Iniciarsesion
-
-  onLoginSubmit(event) {
-    event.preventDefault()
-    const { rut, password } = this.state
-    var str_1 = urlcodeJson.encode( { "rut" : this.state.rut , "password" : this.state.password } , true );
-   
-    if (rut && password) { //verificar que existe user
-      
-      fetch('http://localhost:5555/usuario/login?' + str_1)
-        .then(result => {
-          if (result.status !== 200) {
-            this.setState({loginError: result.message});
-            console.log('loging');
-            
-          } else{
-            //redireccionar
-            const url = '/reserva'
-            this.setState(url)
-          }
+    onLoginSubmit(event) {
+        event.preventDefault()
+        const { rut, password } = this.state
+        var str_1 = urlcodeJson.encode( { "rut" : this.state.rut , "password" : this.state.password } , true );
+       
+        if (rut && password) { //verificar que existe user
           
-        }).catch(e =>{
-          console.log(e);
-        })
+          fetch('http://localhost:5555/usuario/login?' + str_1)
+            .then(result => {
+              if (result.status !== 200) {
+                this.setState({loginError: result.message});
+                console.log('loging');
+                
+              } else{
+                //redireccionar a donde corresponda cuanto login es exitoso
+                const url = '/reserva'
+                this.setState(url)
+              }
+              
+            }).catch(e =>{
+              console.log(e);
+            })
+        }
     }
-  }
 
     render(){
         return(
         
-        <div class="Iniciarsesion">
+        <div className="Iniciarsesion">
             <form method="get">
-                <h2> Iniciar sesión </h2>
+                <h2> Iniciar sesión 
+                </h2>
 
                 <br />
                 RUT <input type ="text"
@@ -73,7 +72,7 @@ export default class Form extends React.Component{
 
                 <button href="usuario" 
                     onClick={this.onLoginSubmit} 
-                    class="btn btn-primary btn-block btn-large">Continuar
+                    className="btn btn-primary btn-block btn-large">Continuar
                 </button>
 
             </form>
