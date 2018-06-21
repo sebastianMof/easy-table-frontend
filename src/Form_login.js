@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import urlcodeJson from 'urlcode-json';
+import {BrowserRouter as Router, Link, NavLink, Redirect} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
 
 
 export default class Form_login extends React.Component{
@@ -43,8 +45,10 @@ export default class Form_login extends React.Component{
                     console.log('Revisar datos');
                  } else{
                     //redireccionar a mensaje de logeado
+
                     this.setState({loginStatus: true});
-                    console.log(this.state.loginStatus);   
+    
+
                  }  
             }).catch(e =>{
               console.log('catch',e);
@@ -73,19 +77,17 @@ export default class Form_login extends React.Component{
                 <br /> 
                 <br />
                 <button href="usuario" 
-                    onClick={this.onLoginSubmit} 
+                    onClick={this.onLoginSubmit}
                     className="btn btn-primary btn-block btn-large">Continuar
                 </button>
+                {
+                    this.state.loginStatus ? (<Redirect to='/reserva/capacidad' />) : <div></div>
+                }
+                
 
             </form>
             <br />
-            <span className="App-sub" >
-                <a href="Form_registro" 
-                    style={{color: '#000'}} 
-                    //redireccionar a Form_regis
-                    onClick={() => this.crearUsuario()}>Crear Cuenta
-                </a> 
-            </span>  
+            
         </div>
 
         );

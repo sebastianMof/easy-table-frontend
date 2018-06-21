@@ -34,13 +34,14 @@ export default class Mesas extends Component {
                 console.log('Respuesta backend', responseJSON);
                 
                 if (responseJSON.status !== 1) {
-                        this.setState({loginError: responseJSON.message});                        
+                                   
                         //mensaje de error al cargar mesas del local
                     
                 } else{
                         this.setState({    
                             mesas: responseJSON.data,
                         });
+                        
                         //console.log(this.state.mesas[0].numero)      
                         //mesas cargadas
                 }
@@ -63,7 +64,7 @@ export default class Mesas extends Component {
 
 
                 { mesasLoaded ? 
-                    <p>
+                    <h3>
                         Mesas en Local
                         <ul>
                             {this.state.mesas.map((mesa, i) =>
@@ -73,7 +74,7 @@ export default class Mesas extends Component {
                                 </li>
                             )}<br />
                         </ul>
-                    </p>
+                    </h3>
 
                     :
                     <div></div>

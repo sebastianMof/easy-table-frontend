@@ -1,6 +1,9 @@
 import React from 'react';
 import './App.css';
 import urlcodeJson from 'urlcode-json';
+import {BrowserRouter as Router, Link, NavLink, Redirect} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
 
 export default class Form_registro extends React.Component{
     
@@ -12,8 +15,7 @@ export default class Form_registro extends React.Component{
             apellido: "",
             email: "",
             password:"",
-            loginError: '',
-            url:''
+            loginStatus: false,
         };
 
         this.crearUsuario = this.crearUsuario.bind(this);
@@ -23,7 +25,7 @@ export default class Form_registro extends React.Component{
     //Crear usuario
     crearUsuario(event) {
         event.preventDefault()
-        const { rut, password, nombre, apellido, email} = this.state
+        const { rut, password, nombre, apellido, email, loginStatus} = this.state
         const data = {
             rut : this.state.rut,
             tipo_usuario : 'Cliente',
@@ -50,10 +52,11 @@ export default class Form_registro extends React.Component{
                     console.log('Respuesta backend', responseJSON);
                    
                     if (responseJSON.status !== 1) {
-                        this.setState({loginError: responseJSON.message});
+                        console.log('OHMYGOOOD');
                     
                      } else{
                         //redireccionar a mensaje de creado
+                        this.setState({loginStatus: true});
                         console.log(':D');
                         
                      }
@@ -103,6 +106,9 @@ export default class Form_registro extends React.Component{
                     onClick={this.crearUsuario} 
                     className="btn btn-primary btn-block btn-large">Registrarse  
                 </button>
+                {
+                    this.state.loginStatus ? (<Redirect to='/' />) : <div></div>
+                }
 
             </form>
         </div>
