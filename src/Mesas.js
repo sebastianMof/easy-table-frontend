@@ -15,6 +15,12 @@ export default class Mesas extends Component {
     }
 
     loadMesas() {
+
+        if(this.state.mesasLoaded === true){
+            this.setState({    
+            mesasLoaded: false
+            });
+        }else{
         this.setState({    
             mesasLoaded: true
         });
@@ -42,6 +48,7 @@ export default class Mesas extends Component {
             .catch(error => {
                 console.log(':(', error);
             })
+        }
     }
 
     render() {
@@ -53,11 +60,22 @@ export default class Mesas extends Component {
                     onClick={this.loadMesas} 
                     className="btn btn-primary btn-block btn-large">Mesas  
                 </button>
-               <ul>
-                    {this.state.mesas.map((mesa, i) =>
-                        <li key={i}>{mesa.numero} - {mesa.capacidad}</li>
-                    )}
-                </ul>
+
+
+                { mesasLoaded ? 
+                    <p>
+                        Numero - Capacidad
+                        <ul>
+                            {this.state.mesas.map((mesa, i) =>
+                                <li key={i}>{mesa.numero} - {mesa.capacidad}</li>
+                            )}
+                        </ul>
+                    </p>
+
+                    :
+                    <div></div>
+                }
+               
                
 
                 

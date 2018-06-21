@@ -48,7 +48,7 @@ class App extends Component {
         		    </header>
         			<br/>
         			<h1 className="App-intro">
-                        <Usuarios />
+                        <Reservas />
                     </h1>
                     <br/>
     	    		
