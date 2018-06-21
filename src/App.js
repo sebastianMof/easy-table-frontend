@@ -39,15 +39,12 @@ class App extends Component {
             <Sidebar sidebar={<b>Sidebar content</b>}
                open={this.state.sidebarOpen}
                onSetOpen={this.onSetSidebarOpen}>
+                
                 <div className="App">
         	        <header className="App-header">
         		        <img src={logo} className="App-logo" alt="logo" />
-        		    	
         		    	<h1 className="App-title">Bienvenido a Easy Table</h1>
-        		    	<h2 className="App-title">La manera más fácil de reservar</h2>
-        		    	
-        		    	<div className="App-intro">
-                    	</div>
+        		    	<h2 className="App-title">La manera más fácil de reservar</h2>	
         		    </header>
         			<br/>
         			<h1 className="App-intro">

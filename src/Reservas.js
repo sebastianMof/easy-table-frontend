@@ -12,6 +12,7 @@ export default class Reservas extends Component {
             estado: props.estado,
             mesaNumero: props.mesaNumero,
             usuarioRut: props.usuarioRut,
+            reservasLoaded: false,
             reservas: []
         }
         this.loadReservas = this.loadReservas.bind(this);
@@ -20,36 +21,48 @@ export default class Reservas extends Component {
     }
 
     loadReservas() {
-        this.setState({    
-            reservasLoaded: true
-        });
-        fetch('http://localhost:5555/reserva/', {
-            method:'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },})
-            .then(response => response.json())
-            .then(responseJSON => {
-                console.log('Respuesta backend', responseJSON);
-                
-                if (responseJSON.status !== 1) {
-                        this.setState({loginError: responseJSON.message});                        
-                        //mensaje de error al cargar mesas del local
+        if(this.state.reservasLoaded === true){
+            this.setState({    
+                reservasLoaded: false
+            });
+        }else{
+            this.setState({    
+                reservasLoaded: true
+            });
+            fetch('http://localhost:5555/reserva/', {
+                method:'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },})
+                .then(response => response.json())
+                .then(responseJSON => {
+                    console.log('Respuesta backend', responseJSON);
                     
-                } else{
-                        this.setState({    
-                            reservas: responseJSON.data,
-                        });
-                        //console.log(this.state.mesas[0].numero)      
-                        //mesas cargadas
-                }
-            })
-            .catch(error => {
-                console.log(':(', error);
-            })
+                    if (responseJSON.status !== 1) {
+                            this.setState({loginError: responseJSON.message});                        
+                            //mensaje de error al cargar mesas del local
+                        
+                    } else{
+                            this.setState({    
+                                reservas: responseJSON.data,
+                            });
+                            //console.log(this.state.mesas[0].numero)      
+                            //mesas cargadas
+                    }
+                })
+                .catch(error => {
+                    console.log(':(', error);
+                })
+        }
     }
 
     loadReservasActivas() {
+        if(this.state.reservasLoaded === true){
+            this.setState({    
+                reservasLoaded: false
+            });
+        }else{
+
         this.setState({    
             reservasLoaded: true
         });
@@ -77,6 +90,7 @@ export default class Reservas extends Component {
             .catch(error => {
                 console.log(':(', error);
             })
+        }
     }
 
 
@@ -95,14 +109,17 @@ export default class Reservas extends Component {
                     onClick={this.loadReservasActivas} 
                     className="btn btn-primary btn-block btn-large">Reservas Actvas 
                 </button>
-               <ul>
-                    {this.state.reservas.map((reserva, i) =>
-                        <li key={i}>{reserva.id} - {reserva.fecha_inicio_reserva} - {reserva.fecha_fin_reserva}  - {reserva.estado} -{reserva.mesaNumero} - {reserva.usuarioRut}  </li>
-                    )}
-                </ul>
-               
-
-                
+                <br />
+                {reservasLoaded ? 
+                    <ul>
+                        {this.state.reservas.map((reserva, i) =>
+                            <li key={i}>{reserva.id} - {reserva.fecha_inicio_reserva} - {reserva.fecha_fin_reserva}  - {reserva.estado} -{reserva.mesaNumero} - {reserva.usuarioRut}  </li>
+                        )}
+                    </ul>
+                    : 
+                    <div></div>
+                }
+   
             </div>
         );
     }
