@@ -16,6 +16,10 @@ import Form_reserva_capacidad from './Form_reserva_capacidad.js';
 import Form_reserva_numero from './Form_reserva_numero.js';
 import Form_mesa from './Form_mesa.js';
 import Form_liberar from './Form_liberar.js';
+import Form_delete_user from './Form_delete_user';
+import Form_delete_mesa from './Form_delete_mesa';
+import Form_delete_reserva from './Form_delete_reserva';
+
 //data
 import Mesas from './Mesas.js';
 import Reservas from './Reservas.js';
@@ -63,6 +67,9 @@ class App extends Component {
                             <NavLink to ="/mesas" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Mesas</NavLink>&emsp;
                             <NavLink to ="/usuarios" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Usuarios</NavLink>&emsp;
                             <NavLink to ="/reservas" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Reservas</NavLink>&emsp;
+                            <NavLink to ="/usuario/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Usuario</NavLink>&emsp;
+                            <NavLink to ="/mesa/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Mesa</NavLink>&emsp;
+                             <NavLink to ="/reserva/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Reserva</NavLink>&emsp;
                 
             		    </header>
             			<br/>
@@ -72,16 +79,20 @@ class App extends Component {
             			<h1 className="App-contenido">
                             <Route path='/' exact component={Form_login}/>
                             <Route path='/registro' exact component={Form_registro}/>
+                            <Route path='/usuario/delete' exact component={Form_delete_user}/>
 
                             <Route path='/reserva/capacidad' exact component={Form_reserva_capacidad}/>
                             <Route path='/reserva/numero' exact component={Form_reserva_numero}/>
-
                             <Route path='/liberar' exact component={Form_liberar}/>
-                            <Route path='/mesa' exact component={Form_mesa}/>
 
+                            <Route path='/mesa' exact component={Form_mesa}/>
                             <Route path='/mesas' exact component={Mesas}/>
+                            <Route path='/mesa/delete' exact component={Form_delete_mesa}/>
+
                             <Route path='/usuarios' exact component={Usuarios}/>
                             <Route path='/reservas' exact component={Reservas}/>
+                            <Route path='/reserva/delete' exact component={Form_delete_reserva}/>
+
                         </h1>
                         <br/>
 
