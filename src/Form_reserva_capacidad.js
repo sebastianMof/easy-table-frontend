@@ -15,6 +15,7 @@ export default class Form_reserva_capacidad extends React.Component{
             fecha_inicio_reserva: "",
             fecha_fin_reserva:"",
             capacidad: "",
+            mesa:"",
             hora_inicio_reserva:"",
             hora_fin_reserva:""
         };
@@ -34,6 +35,8 @@ export default class Form_reserva_capacidad extends React.Component{
             hora_inicio_reserva : this.state.hora_inicio_reserva,
             hora_fin_reserva : this.state.hora_fin_reserva,
             capacidad : this.state.capacidad,
+            mesa:''
+
         }
 
         if (rut && fecha_inicio_reserva && fecha_fin_reserva &&hora_inicio_reserva&&hora_fin_reserva && capacidad ) { 
@@ -53,8 +56,7 @@ export default class Form_reserva_capacidad extends React.Component{
                     console.log('Respuesta backend', responseJSON);
                    
                     if (responseJSON.status !== 1) {
-                        this.setState({loginError: responseJSON.message});
-
+                        console.log('D:');
                         //mensaje de no disponibilidad
                     
                      } else{

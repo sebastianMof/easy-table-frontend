@@ -12,6 +12,7 @@ export default class Form_reserva_numero extends React.Component{
             fecha_inicio_reserva: "",
             fecha_fin_reserva:"",
             mesa: "",
+            capacidad:"",
             hora_inicio_reserva:"",
             hora_fin_reserva:""
         };
@@ -30,7 +31,8 @@ export default class Form_reserva_numero extends React.Component{
             fecha_fin_reserva : this.state.fecha_fin_reserva,
             hora_inicio_reserva : this.state.hora_inicio_reserva,
             hora_fin_reserva : this.state.hora_fin_reserva,
-            mesa : this.state.mesa
+            mesa : this.state.mesa,
+            capacidad:''
         }
 
         if (rut && fecha_inicio_reserva && fecha_fin_reserva &&hora_inicio_reserva&&hora_fin_reserva && mesa) { 
@@ -50,7 +52,7 @@ export default class Form_reserva_numero extends React.Component{
                     console.log('Respuesta backend', responseJSON);
                    
                     if (responseJSON.status !== 1) {
-                        this.setState({loginError: responseJSON.message});
+                        console.log('OHMYGOOOD');
 
                         //mensaje de no disponibilidad
                     
