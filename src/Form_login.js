@@ -40,12 +40,12 @@ export default class Form_login extends React.Component{
                
                 if (responseJSON.status !== 1) {
                     this.setState({loginError: responseJSON.message});
-                
+                    console.log('Respuesta backend1');
                  } else{
                     //redireccionar a mensaje de logeado
                     const url = '/reserva'
                     this.setState(url);
-                    console('LOGING :D');
+                    console.log('LOGING :D');
                     
                  }  
             }).catch(e =>{

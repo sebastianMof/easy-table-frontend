@@ -16,6 +16,7 @@ import Mesas from './Mesas.js';
 import Reservas from './Reservas.js';
 import Usuarios from './Usuarios.js'
 
+
 class App extends Component {
 
     constructor(props) {
@@ -48,7 +49,7 @@ class App extends Component {
         		    </header>
         			<br/>
         			<h1 className="App-intro">
-                        <Reservas />
+                        <Form_login />
                     </h1>
                     <br/>
     	    		
