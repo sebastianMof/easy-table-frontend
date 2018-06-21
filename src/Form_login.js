@@ -37,19 +37,17 @@ export default class Form_login extends React.Component{
             .then(response => response.json())
             .then(responseJSON => {
                 console.log('Respuesta backend', responseJSON);
-               
+                console.log(responseJSON.status);
                 if (responseJSON.status !== 1) {
-                    this.setState({loginError: responseJSON.message});
-                    console.log('Respuesta backend1');
+                    
+                    console.log('Revisar datos');
                  } else{
                     //redireccionar a mensaje de logeado
-                    const url = '/reserva'
-                    this.setState(url);
-                    console.log('LOGING :D');
+                    console.log(':D');
                     
                  }  
             }).catch(e =>{
-              console.log(e);
+              console.log('catch',e);
             })
         }
     }
@@ -68,12 +66,10 @@ export default class Form_login extends React.Component{
                     value={this.state.rut}
                     onChange={e => this.setState({rut: e.target.value})}/>
                 <br />
-                <br />
                 CONTRASEÑA <input type="password"
                     placeholder="password" required="required"
                     value={this.state.password}
                     onChange={e => this.setState({password: e.target.value})}/>
-                <br /> 
                 <br /> 
                 <br />
                 <button href="usuario" 

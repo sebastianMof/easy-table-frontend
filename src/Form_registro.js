@@ -54,8 +54,7 @@ export default class Form_registro extends React.Component{
                     
                      } else{
                         //redireccionar a mensaje de creado
-                        const url = '/reserva'
-                        this.setState(url)
+                        console.log(':D');
                         
                      }
                   

@@ -51,8 +51,7 @@ export default class Form_liberar extends React.Component{
                     
                      } else{
                         //redireccionar a mensaje de reserva liberada
-                        const url = '/libera'
-                        this.setState(url)
+                        console.log(':D');
                         
                      }
                   
