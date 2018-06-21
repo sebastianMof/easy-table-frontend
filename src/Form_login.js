@@ -12,6 +12,7 @@ export default class Form_login extends React.Component{
         this.state = {
             rut: '',
             password:  '',
+            tipo_usuario:'',
             loginStatus: false
             
         };
@@ -41,13 +42,17 @@ export default class Form_login extends React.Component{
                 console.log('Respuesta backend', responseJSON);
                 console.log(responseJSON.status);
                 if (responseJSON.status !== 1) {
-                    
+                    responseJSON.data
                     console.log('Revisar datos');
                  } else{
                     //redireccionar a mensaje de logeado
-
-                    this.setState({loginStatus: true});
-    
+                    
+                    this.setState({
+                        loginStatus: true,
+                        tipo_usuario: responseJSON.data.tipo_usuario
+                    });
+                    console.log(this.state.tipo_usuario)
+                    
 
                  }  
             }).catch(e =>{
@@ -81,7 +86,10 @@ export default class Form_login extends React.Component{
                     className="btn btn-primary btn-block btn-large">Continuar
                 </button>
                 {
-                    this.state.loginStatus ? (<Redirect to='/reserva/capacidad' />) : <div></div>
+                    (this.state.loginStatus) && (this.state.tipo_usuario==='Admin')? (<Redirect to='/reserva/capacidad' />) : <div></div>
+                }
+                {
+                    (this.state.loginStatus) && (this.state.tipo_usuario==='Cliente')? (<Redirect to='/reserva/capacidad' />) : <div></div>
                 }
                 
 

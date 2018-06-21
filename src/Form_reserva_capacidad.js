@@ -3,6 +3,9 @@ import './App.css';
 import urlcodeJson from 'urlcode-json';
 
 
+import {BrowserRouter as Router, Link, NavLink, Redirect} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
 export default class Form_reserva_capacidad extends React.Component{
     
     constructor(props){
@@ -72,7 +75,6 @@ export default class Form_reserva_capacidad extends React.Component{
             <form method="post">
                 <h2> Reservar
                 </h2>
-
                 <br />
 
                 FECHA INICIO RESERVA <input type ="date"

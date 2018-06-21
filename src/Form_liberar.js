@@ -3,6 +3,10 @@ import './App.css';
 import urlcodeJson from 'urlcode-json';
 import moment from 'moment';
 
+
+import {BrowserRouter as Router, Link, NavLink, Redirect} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
+
 export default class Form_liberar extends React.Component{
     
     constructor(props){
@@ -67,7 +71,6 @@ export default class Form_liberar extends React.Component{
             <form method="post">
                 <h2> Liberar Reserva
                 </h2>
-
                 <br />
 
                 RUT <input type ="text"

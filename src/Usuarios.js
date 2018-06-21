@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {mesa} from './usuario';
+import {usuario} from './usuario';
 
 
 export default class Usuarios extends Component {

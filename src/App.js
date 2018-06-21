@@ -29,6 +29,7 @@ class App extends Component {
     	this.state = {
     		fields: [],
             sidebarOpen: false
+            
     	};
 
         this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
@@ -38,11 +39,9 @@ class App extends Component {
         this.setState({sidebarOpen: open});
     }
 
-
-
     render() {
     	const {fields, SidebarOpen} = this.state;
-
+        
     	return (
             <Router>
                 <Sidebar sidebar={<b>Sidebar content</b>}
@@ -64,6 +63,7 @@ class App extends Component {
                             <NavLink to ="/mesas" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Mesas</NavLink>&emsp;
                             <NavLink to ="/usuarios" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Usuarios</NavLink>&emsp;
                             <NavLink to ="/reservas" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Reservas</NavLink>&emsp;
+                
             		    </header>
             			<br/>
 
@@ -72,10 +72,13 @@ class App extends Component {
             			<h1 className="App-contenido">
                             <Route path='/' exact component={Form_login}/>
                             <Route path='/registro' exact component={Form_registro}/>
+
                             <Route path='/reserva/capacidad' exact component={Form_reserva_capacidad}/>
                             <Route path='/reserva/numero' exact component={Form_reserva_numero}/>
+
                             <Route path='/liberar' exact component={Form_liberar}/>
                             <Route path='/mesa' exact component={Form_mesa}/>
+
                             <Route path='/mesas' exact component={Mesas}/>
                             <Route path='/usuarios' exact component={Usuarios}/>
                             <Route path='/reservas' exact component={Reservas}/>
