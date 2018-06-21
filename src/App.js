@@ -69,8 +69,8 @@ class App extends Component {
                             <NavLink to ="/liberar" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Liberar Mesa</NavLink>&emsp;
                             <NavLink to ="/reserva/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Reserva</NavLink>&emsp;&emsp;&emsp;&emsp;&emsp;
                             
-                            <NavLink to ="/mesas" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Mesas</NavLink>&emsp;
-                            <NavLink to ="/mesa" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Crear Mesa</NavLink>&emsp;
+                            <NavLink to ="/mesas"       activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Mesas</NavLink>&emsp;
+                            <NavLink to ="/mesa/create"        activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Crear Mesa</NavLink>&emsp;
                             <NavLink to ="/mesa/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Mesa</NavLink>&emsp;
                             
                 
@@ -89,7 +89,7 @@ class App extends Component {
                             <Route path='/reservas' exact component={Reservas}/>
                             <Route path='/reserva/delete' exact component={Form_delete_reserva}/>
 
-                            <Route path='/mesa' exact component={Form_mesa}/>
+                            <Route path='/mesa/create' exact strict component={Form_mesa}/>
                             <Route path='/mesas' exact component={Mesas}/>
                             <Route path='/mesa/delete' exact component={Form_delete_mesa}/>
 
