@@ -60,44 +60,42 @@ class App extends Component {
 
                             <NavLink to ="/" exact activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Login</NavLink>&emsp; 
                             <NavLink to ="/registro" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Registrarse</NavLink>&emsp;
+                            <NavLink to ="/usuario/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Usuario</NavLink>&emsp;
+                            <NavLink to ="/usuarios" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Usuarios</NavLink>&emsp;&emsp;&emsp;&emsp;&emsp;
+
                             <NavLink to ="/reserva/capacidad" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Reservar Capacidad</NavLink>&emsp;
                             <NavLink to ="/reserva/numero" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Reservar Número</NavLink>&emsp;
-                            <NavLink to ="/mesa" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Crear Mesa</NavLink>&emsp;
-                            <NavLink to ="/liberar" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Liberar Mesa</NavLink>&emsp;&emsp;&emsp;&emsp;
-                            <NavLink to ="/mesas" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Mesas</NavLink>&emsp;
-                            <NavLink to ="/usuarios" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Usuarios</NavLink>&emsp;
                             <NavLink to ="/reservas" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Reservas</NavLink>&emsp;
-                            <NavLink to ="/usuario/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Usuario</NavLink>&emsp;
+                            <NavLink to ="/liberar" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Liberar Mesa</NavLink>&emsp;
+                            <NavLink to ="/reserva/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Reserva</NavLink>&emsp;&emsp;&emsp;&emsp;&emsp;
+                            
+                            <NavLink to ="/mesas" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Ver Mesas</NavLink>&emsp;
+                            <NavLink to ="/mesa" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Crear Mesa</NavLink>&emsp;
                             <NavLink to ="/mesa/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Mesa</NavLink>&emsp;
-                             <NavLink to ="/reserva/delete" activeStyle ={{color:'#ffffff',fontWeight: 'bold'}}>Borrar Reserva</NavLink>&emsp;
+                            
                 
             		    </header>
             			<br/>
 
-
-                
             			<h1 className="App-contenido">
                             <Route path='/' exact component={Form_login}/>
                             <Route path='/registro' exact component={Form_registro}/>
                             <Route path='/usuario/delete' exact component={Form_delete_user}/>
+                            <Route path='/usuarios' exact component={Usuarios}/>
 
                             <Route path='/reserva/capacidad' exact component={Form_reserva_capacidad}/>
                             <Route path='/reserva/numero' exact component={Form_reserva_numero}/>
                             <Route path='/liberar' exact component={Form_liberar}/>
+                            <Route path='/reservas' exact component={Reservas}/>
+                            <Route path='/reserva/delete' exact component={Form_delete_reserva}/>
 
                             <Route path='/mesa' exact component={Form_mesa}/>
                             <Route path='/mesas' exact component={Mesas}/>
                             <Route path='/mesa/delete' exact component={Form_delete_mesa}/>
 
-                            <Route path='/usuarios' exact component={Usuarios}/>
-                            <Route path='/reservas' exact component={Reservas}/>
-                            <Route path='/reserva/delete' exact component={Form_delete_reserva}/>
-
                         </h1>
                         <br/>
-
-                        
-        	    		
+	    		
             	    </div>
                 </Sidebar> 
             </Router>   
