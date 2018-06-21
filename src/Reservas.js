@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {reserva} from './reserva';
+import moment from 'moment';
 
 
 export default class Reservas extends Component {
@@ -107,13 +108,19 @@ export default class Reservas extends Component {
                 <button 
                     href="#" 
                     onClick={this.loadReservasActivas} 
-                    className="btn btn-primary btn-block btn-large">Reservas Actvas 
+                    className="btn btn-primary btn-block btn-large">Reservas Activas 
                 </button>
                 <br />
                 {reservasLoaded ? 
                     <ul>
                         {this.state.reservas.map((reserva, i) =>
-                            <li key={i}>{reserva.id} - {reserva.fecha_inicio_reserva} - {reserva.fecha_fin_reserva}  - {reserva.estado} -{reserva.mesaNumero} - {reserva.usuarioRut}  </li>
+                            <li key={i}> 
+                                ID: {reserva.id}<br />
+                                NUMERO MESA: {reserva.mesaNumero}<br />
+                                USUARIO: {reserva.usuarioRut}<br /> 
+                                INICIO: {reserva.fecha_inicio_reserva}<br />
+                                FIN: {reserva.fecha_fin_reserva}<br />
+                            </li>
                         )}
                     </ul>
                     : 

@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import urlcodeJson from 'urlcode-json';
-import moment from 'moment';
 
-export default class Form_reserva extends React.Component{
+
+export default class Form_reserva_capacidad extends React.Component{
     
     constructor(props){
         super(props);
@@ -12,11 +12,8 @@ export default class Form_reserva extends React.Component{
             fecha_inicio_reserva: "",
             fecha_fin_reserva:"",
             capacidad: "",
-            mesa: "",
             hora_inicio_reserva:"",
-            hora_fin_reserva:"",
-            loginError: '',
-            url:''
+            hora_fin_reserva:""
         };
 
         this.crearReserva = this.crearReserva.bind(this);
@@ -26,7 +23,7 @@ export default class Form_reserva extends React.Component{
     //Crear usuario
     crearReserva(event) {
         event.preventDefault()
-        const { rut, fecha_inicio_reserva, fecha_fin_reserva, capacidad, mesa, hora_fin_reserva, hora_inicio_reserva} = this.state
+        const { rut, fecha_inicio_reserva, fecha_fin_reserva, capacidad, hora_fin_reserva, hora_inicio_reserva} = this.state
         const data = {
             rut : this.state.rut,
             fecha_inicio_reserva : this.state.fecha_inicio_reserva,
@@ -34,10 +31,9 @@ export default class Form_reserva extends React.Component{
             hora_inicio_reserva : this.state.hora_inicio_reserva,
             hora_fin_reserva : this.state.hora_fin_reserva,
             capacidad : this.state.capacidad,
-            mesa : this.state.mesa
         }
 
-        if (rut && fecha_inicio_reserva && fecha_fin_reserva &&hora_inicio_reserva&&hora_fin_reserva && (capacidad ||mesa)) { 
+        if (rut && fecha_inicio_reserva && fecha_fin_reserva &&hora_inicio_reserva&&hora_fin_reserva && capacidad ) { 
 
             console.log(JSON.stringify(data));
             fetch('http://localhost:5555/reserva/', {
@@ -80,6 +76,7 @@ export default class Form_reserva extends React.Component{
                 <br />
 
                 FECHA INICIO RESERVA <input type ="date"
+                    min="2018-06-21" max="2019-06-21"
                     required="required"
                     value={this.state.fecha_inicio_reserva}
                     onChange={e => this.setState({fecha_inicio_reserva: e.target.value})}/>
@@ -106,16 +103,13 @@ export default class Form_reserva extends React.Component{
                     value={this.state.rut}
                     onChange={e => this.setState({rut: e.target.value})}/>
                 <br />
+
                 CAPACIDAD <input type ="text"
                     placeholder="4" required="required"
                     value={this.state.capacidad}
                     onChange={e => this.setState({capacidad: e.target.value})}/>
                 <br />
-                NUMERO DE MESA <input type ="text"
-                    placeholder="7" required="required"
-                    value={this.state.mesa}
-                    onChange={e => this.setState({mesa: e.target.value})}/>
-                <br />
+                
 
                 
                 <button 

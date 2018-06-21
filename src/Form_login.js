@@ -10,8 +10,8 @@ export default class Form_login extends React.Component{
         this.state = {
             rut: '',
             password:  '',
-            loginError: '',
-            url:''
+            loginStatus: false
+            
         };
 
         this.onLoginSubmit = this.onLoginSubmit.bind(this);
@@ -20,7 +20,7 @@ export default class Form_login extends React.Component{
 //Iniciarsesion
     onLoginSubmit(event) {
         event.preventDefault()
-        const { rut, password } = this.state
+        const { rut, password , loginStatus} = this.state
         var str_1 = urlcodeJson.encode( { 
             "rut" : this.state.rut , 
             "password" : this.state.password 
@@ -43,8 +43,8 @@ export default class Form_login extends React.Component{
                     console.log('Revisar datos');
                  } else{
                     //redireccionar a mensaje de logeado
-                    console.log(':D');
-                    
+                    this.setState({loginStatus: true});
+                    console.log(this.state.loginStatus);   
                  }  
             }).catch(e =>{
               console.log('catch',e);

@@ -64,11 +64,14 @@ export default class Mesas extends Component {
 
                 { mesasLoaded ? 
                     <p>
-                        Numero - Capacidad
+                        Mesas en Local
                         <ul>
                             {this.state.mesas.map((mesa, i) =>
-                                <li key={i}>{mesa.numero} - {mesa.capacidad}</li>
-                            )}
+                                <li key={i}>
+                                NUMERO {mesa.numero} <br />
+                                CAPACIDAD {mesa.capacidad}<br />
+                                </li>
+                            )}<br />
                         </ul>
                     </p>
 

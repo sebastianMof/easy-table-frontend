@@ -46,7 +46,7 @@ export default class Form_liberar extends React.Component{
                     console.log('Respuesta backend', responseJSON);
                    
                     if (responseJSON.status !== 1) {
-                        this.setState({loginError: responseJSON.message});
+                        
                         //mensaje de error al liberar mesa
                     
                      } else{
